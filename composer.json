@@ -1,0 +1,14 @@
+{
+    "name": "mjvamorim/tenant",
+    "description": "Package to Choise Database Based on Company_id field",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mauricio Amorim",
+            "email": "mjvamorim@gmail.com"
+        }
+    ],
+    "require": {}
+
+}
