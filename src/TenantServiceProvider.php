@@ -11,12 +11,12 @@ class TenantServiceProvider extends ServiceProvider {
         $this->loadRoutesFrom(__DIR__.'/routes.php');
 
         //Views
-        $this->loadViewsFrom(__DIR__.'/views', 'tenant'); //return view(subscription::index”);
-        $this->publishes([__DIR__.'/views' => resource_path('views/mjvamorim/tenant'),]);
+        //$this->loadViewsFrom(__DIR__.'/views', 'tenant'); //return view(subscription::index”);
+        //$this->publishes([__DIR__.'/views' => resource_path('views/mjvamorim/tenant'),]);
         
 
         //Migrations
-        //$this->loadMigrationsFrom(__DIR__.'/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/migrations');
         $this->publishes([__DIR__.'/migrations' => database_path('migrations/'),]);
 
 
