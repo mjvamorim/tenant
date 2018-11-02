@@ -26,7 +26,9 @@ class TenantServiceProvider extends ServiceProvider {
         //Config
         //$this->loadSeedsFrom(__DIR__.'/seeds');
         $this->publishes([__DIR__.'/config/tenant.php' => config_path('tenant.php'),]);
-
+        $this->mergeConfigFrom(
+            __DIR__.'/config/tenant.php', ''
+        );
 
 
         //Assets
