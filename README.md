@@ -1,3 +1,4 @@
+#Tenant  1.0.1
 This package provider a database tenant soluction which database connection is choice based on company/user select on login;
 
 composer require mjvamorim/tenant
