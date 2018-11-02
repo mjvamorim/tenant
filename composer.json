@@ -12,7 +12,8 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "Amorim\\Tenant\\": "src/"
+            "Amorim\\Tenant\\": "src/",
+            "Amorim\\Tenant\\Database\\Seeds": "srs/seeds/"
         }
     }
 }

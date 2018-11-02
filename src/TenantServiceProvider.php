@@ -19,6 +19,15 @@ class TenantServiceProvider extends ServiceProvider {
         $this->loadMigrationsFrom(__DIR__.'/migrations');
         $this->publishes([__DIR__.'/migrations' => database_path('migrations/'),]);
 
+        //Migrations
+        //$this->loadSeedsFrom(__DIR__.'/seeds');
+        $this->publishes([__DIR__.'/seeds' => database_path('seeds/'),]);
+
+        //Config
+        //$this->loadSeedsFrom(__DIR__.'/seeds');
+        $this->publishes([__DIR__.'/config/tenant.php' => config_path('tenant.php'),]);
+
+
 
         //Assets
         //$this->publishes([__DIR__.'/resources/js' => public_path('mjvamorim/tenant/js'),], 'public');
