@@ -3,6 +3,7 @@
     "description": "Package to Choise Database Based on Company_id field",
     "type": "library",
     "license": "MIT",
+    "version": "1.0.1",
     "authors": [
         {
             "name": "Mauricio Amorim",
