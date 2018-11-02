@@ -16,12 +16,12 @@ class TenantServiceProvider extends ServiceProvider {
         
 
         //Migrations
-        $this->loadMigrationsFrom(__DIR__.'/migrations');
-        $this->publishes([__DIR__.'/migrations' => database_path('migrations/'),]);
+        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
+        $this->publishes([__DIR__.'/database/migrations' => database_path('migrations/'),]);
 
         //Migrations
         //$this->loadSeedsFrom(__DIR__.'/seeds');
-        $this->publishes([__DIR__.'/seeds' => database_path('seeds/'),]);
+        $this->publishes([__DIR__.'/database/seeds' => database_path('seeds/'),]);
 
         //Config
         //$this->loadSeedsFrom(__DIR__.'/seeds');

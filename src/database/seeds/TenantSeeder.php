@@ -5,6 +5,7 @@ namespace Amorim\Tenant\Database\Seeds;
 use Illuminate\Database\Seeder;
 use App\User;
 use Amorim\Tenant\Models\Company;
+use Illuminate\Support\Facades\Config;
 
 class TenantSeeder extends Seeder
 {
