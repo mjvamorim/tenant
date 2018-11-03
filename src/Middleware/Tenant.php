@@ -46,7 +46,6 @@ class Tenant {
     }
 
     public function handle(Request $request, Closure $next) {
-        //Novo
         if (auth()->check()) {
             if (auth()->user()->company == null) {
                 $this->createCompanyAuthUser();
