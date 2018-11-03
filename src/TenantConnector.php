@@ -22,10 +22,10 @@ trait TenantConnector {
         DB::purge('tenant');
         
         // Make sure to use the database name we want to establish a connection.
-        Config::set('tenant.connections.tenant.host', $company->db_host);
-        Config::set('tenant.connections.tenant.database', $company->db_database);
-        Config::set('tenant.connections.tenant.username', $company->db_username);
-        Config::set('tenant.connections.tenant.password', $company->db_password);
+        Config::set('database.connections.tenant.host', $company->db_host);
+        Config::set('database.connections.tenant.database', $company->db_database);
+        Config::set('database.connections.tenant.username', $company->db_username);
+        Config::set('database.connections.tenant.password', $company->db_password);
         
         // Rearrange the connection data
         DB::reconnect('tenant');

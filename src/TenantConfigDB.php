@@ -16,11 +16,11 @@ class TenantConfigDB {
             'name' => $data['name'],
             'email' => $data['email'],
             'mobile' => $data['mobile'],
-            'db_host' => Config::get('tenant.connections.main.host') , 
-            'db_username' => Config::get('tenant.connections.main.username') , 
-            'db_password' => Config::get('tenant.connections.main.password') 
+            'db_host' => Config::get('database.connections.main.host') , 
+            'db_username' => Config::get('database.connections.main.username') , 
+            'db_password' => Config::get('database.connections.main.password') 
         ]);
-        $company->db_database = Config::get('tenant.connections.main.database').$company->id;
+        $company->db_database = Config::get('database.connections.main.database').$company->id;
         $company->save();
         self::createDatabase($company);
         return($company);

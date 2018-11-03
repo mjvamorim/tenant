@@ -16,7 +16,7 @@ class AlterUsersTableTenant extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('mobile')->nullable();
             $table->string('image')->nullable();
-            $table->unsignedInteger('company_id')->default(1)->nullable();
+            $table->unsignedInteger('company_id')->nullable();
             $table->string('type')->default('User')->nullable();
             $table->foreign('company_id')->references('id')->on('companies');
         });

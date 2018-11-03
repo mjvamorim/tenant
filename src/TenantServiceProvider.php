@@ -8,7 +8,7 @@ use Illuminate\Support\ServiceProvider;
 class TenantServiceProvider extends ServiceProvider {
     public function boot()
     {
-        $this->loadRoutesFrom(__DIR__.'/routes.php');
+        //$this->loadRoutesFrom(__DIR__.'/routes.php');
 
         //Views
         //$this->loadViewsFrom(__DIR__.'/views', 'tenant'); //return view(subscription::index”);
@@ -26,10 +26,11 @@ class TenantServiceProvider extends ServiceProvider {
         //Config
         //$this->loadSeedsFrom(__DIR__.'/seeds');
         $this->publishes([__DIR__.'/config/tenant.php' => config_path('tenant.php'),]);
-        $this->mergeConfigFrom(
-            __DIR__.'/config/tenant.php', ''
-        );
-
+        // $this->mergeConfigFrom(
+        //     __DIR__.'/config/tenant.php', ''
+        // );
+        $this->publishes([__DIR__.'/Models/User.php' => app_path('User.php'),]);
+      
 
         //Assets
         //$this->publishes([__DIR__.'/resources/js' => public_path('mjvamorim/tenant/js'),], 'public');
@@ -39,7 +40,7 @@ class TenantServiceProvider extends ServiceProvider {
 
     public function register()
     {
-        include __DIR__.'/routes.php';
+    //    include __DIR__.'/routes.php';
 
     }
 }
