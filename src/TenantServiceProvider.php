@@ -19,23 +19,16 @@ class TenantServiceProvider extends ServiceProvider {
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
         $this->publishes([__DIR__.'/database/migrations' => database_path('migrations/'),]);
 
-        //Migrations
-        //$this->loadSeedsFrom(__DIR__.'/seeds');
-        $this->publishes([__DIR__.'/database/seeds' => database_path('seeds/'),]);
 
         //Config
-        //$this->loadSeedsFrom(__DIR__.'/seeds');
+
         $this->publishes([__DIR__.'/config/tenant.php' => config_path('tenant.php'),]);
-        // $this->mergeConfigFrom(
-        //     __DIR__.'/config/tenant.php', ''
-        // );
         $this->publishes([__DIR__.'/Models/User.php' => app_path('User.php'),]);
       
 
         //Assets
         //$this->publishes([__DIR__.'/resources/js' => public_path('mjvamorim/tenant/js'),], 'public');
-        //$this->publishes([__DIR__.'/resources/js' => public_path('mjvamorim/tenant/js'),], 'public');
-        //$this->app->make('Amorim\Tenant\Controllers\TenantController');
+
     }
 
     public function register()

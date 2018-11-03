@@ -17,7 +17,7 @@ class CreateCompaniesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('db_host')->default('localhost')->nullable();
-            $table->string('db_database')->default('clinic1')->nullable();
+            $table->string('db_database')->nullable();
             $table->string('db_username')->default('root')->nullable();
             $table->string('db_password')->default('root')->nullable();
             $table->string('postal_code')->nullable();
