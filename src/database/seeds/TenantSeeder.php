@@ -14,16 +14,17 @@ class TenantSeeder extends Seeder
         Company::create([
             'name'      => 'Pegasus Sistemas',
             'db_host' => Config::get('tenant.connections.main.host'),
-            'db_database' => Config::get('tenant.connections.main.database'),
+            'db_database' => Config::get('tenant.connections.main.database').'1',
             'db_username' => Config::get('tenant.connections.main.username'),
             'db_password' => Config::get('tenant.connections.main.password'),  
         ]);
        
         User::create([
-            'name'      => 'Administrator',
-            'email'     => 'admin@admin.com',
+            'name'      => 'Mauricio Amorim',
+            'email'     => 'mjvamorim@gmail.com',
             'password'  => bcrypt('123456'),
             'type'      => 'Admin',
+            'company_id'=> '1',
         ]);
     }
 }

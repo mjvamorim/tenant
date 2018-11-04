@@ -10,7 +10,8 @@
             "email": "mjvamorim@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+    },
     "autoload": {
         "psr-4": {
             "Amorim\\Tenant\\": "src/",
