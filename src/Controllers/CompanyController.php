@@ -23,7 +23,7 @@ class CompanyController extends Controller
 
     function getData()
     {
-        $companies = Company::all();
+        $companies = Company::select();
         return DataTables::of($companies)
             ->addColumn('action', function($company){
                 $btedit = '<button class="btn edit" id="'.$company->id.'" title="Alterar" data-toggle="tooltip" ><i class="glyphicon glyphicon-edit"></i> </button>';
