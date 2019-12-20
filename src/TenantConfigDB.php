@@ -73,6 +73,25 @@ class TenantConfigDB {
                 $table->timestamps();
             });
         }
+        if(!Schema::connection('tenant')->hasTable('proprietarios')) {
+            Schema::connection('tenant')->create('proprietarios', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('nome')->nullable();
+                $table->string('email')->nullable();
+                $table->string('celular')->nullable();
+                $table->string('fixo')->nullable();
+                $table->string('cpf')->nullable();
+                $table->string('cep')->nullable();
+                $table->string('rua')->nullable();
+                $table->string('numero')->nullable();
+                $table->string('complemento')->nullable();
+                $table->string('bairro')->nullable();
+                $table->string('cidade')->nullable();
+                $table->string('uf')->nullable();
+                $table->string('pais')->nullable();
+                $table->timestamps();
+            });
+        }
     }
     
 }

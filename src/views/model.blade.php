@@ -52,7 +52,7 @@
                 <form method="post" id="formdata">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Add Data</h4>
+                        <h4 class="modal-title">{{ucwords($model)}}</h4>
                     </div>
                     <div class="modal-body">
                         {{csrf_field()}}
@@ -75,7 +75,7 @@
                         <input type="hidden" name="id" id="id" value="" />
                         <input type="hidden" name="button_action" id="button_action" value="insert" />
                         <input type="submit" name="submit" id="action" value="Add" class="btn btn-info" />
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                     </div>
                 </form>
             </div>
@@ -106,9 +106,9 @@ $(document).ready(function() {
         $('#formdata')[0].reset();
         $('#form_output').html('');
         $('#button_action').val('insert');
-        $('#action').val('Add');
+        $('#action').val('Salvar');
         $('#formfields').show();
-        $('.modal-title').text('Add Data');
+        $('.modal-title').text('{{ucwords($model)}}');
     });
 
     $(document).on('click', '.edit', function(){
@@ -130,8 +130,8 @@ $(document).ready(function() {
                 @endforeach
                 $('#id').val(id);
                 $('#formModal').modal('show');
-                $('#action').val('Edit');
-                $('.modal-title').text('Edit Data');
+                $('#action').val('Salvar');
+                $('.modal-title').text('{{ucwords($model)}}');
                 $('#button_action').val('update');
             }
         })
@@ -153,8 +153,8 @@ $(document).ready(function() {
                 $('#name').val(data.name);
                 $('#id').val(id);
                 $('#formModal').modal('show');
-                $('#action').val('Delete');
-                $('.modal-title').text('Delete :'+data.name+'?');
+                $('#action').val('Apagar');
+                $('.modal-title').text('Apaga :'+data.name+'?');
                 $('#button_action').val('delete');
             }
         })
