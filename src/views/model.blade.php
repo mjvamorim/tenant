@@ -35,7 +35,7 @@
                             <th>{{$field['title']}}</th>
                             @endif
                             @endforeach
-                            <th class="text-center">Action</th>
+                            <th class="text-center"></th>
                         </tr>
                     </thead>
                     

@@ -33,46 +33,7 @@ class TenantConfigDB {
     }
 
     public static function createTenantTables() {
-        if(!Schema::connection('tenant')->hasTable('doctors')) {
-            Schema::connection('tenant')->create('doctors', function (Blueprint $table) {
-                $table->increments('id');
-                $table->string('name')->nullable();
-                $table->string('postal_code')->nullable();
-                $table->string('street')->nullable();
-                $table->string('number')->nullable();
-                $table->string('complement')->nullable();
-                $table->string('district')->nullable();
-                $table->string('city')->nullable();
-                $table->string('state')->default('RJ')->nullable();
-                $table->string('country')->default('Brasil')->nullable();
-                $table->string('email')->nullable();
-                $table->string('mobile')->nullable();
-                $table->string('phone')->nullable();
-                $table->timestamps();
-            });
-        }
-        if(!Schema::connection('tenant')->hasTable('examples')) {
-            Schema::connection('tenant')->create('examples', function (Blueprint $table) {
-                $table->increments('id');
-                $table->string('name');
-                //Contacts
-                $table->string('email')->nullable();
-                $table->string('mobile')->nullable();
-                $table->string('phone')->nullable();
-                //Address
-                $table->string('postal_code')->nullable();
-                $table->string('street')->nullable();
-                $table->string('number')->nullable();
-                $table->string('complement')->nullable();
-                $table->string('district')->nullable();
-                $table->string('city')->nullable();
-                $table->string('state')->default('RJ')->nullable();
-                $table->string('country')->default('Brasil')->nullable();
-    
-                
-                $table->timestamps();
-            });
-        }
+
         if(!Schema::connection('tenant')->hasTable('proprietarios')) {
             Schema::connection('tenant')->create('proprietarios', function (Blueprint $table) {
                 $table->increments('id');
@@ -92,6 +53,72 @@ class TenantConfigDB {
                 $table->timestamps();
             });
         }
+        if(!Schema::connection('tenant')->hasTable('unidades')) {
+            Schema::connection('tenant')->create('unidades', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('descricao');
+                $table->unsignedInteger('tamanho')->nullable();
+                $table->unsignedInteger('proprietario_id');
+                $table->string('obs')->nullable();
+                $table->timestamps();
+                $table->foreign('proprietario_id')->references('id')->on('proprietarios');
+            });
+        }
+        if(!Schema::connection('tenant')->hasTable('taxas')) {
+            Schema::connection('tenant')->create('taxas', function (Blueprint $table) {
+                $table->increments('id');
+                $table->unsignedInteger('ano');
+                $table->unsignedInteger('mes');
+                $table->float('valor',8,2);
+                $table->timestamps();
+            });
+        }
+        if(!Schema::connection('tenant')->hasTable('acordos')) {
+            Schema::connection('tenant')->create('acordos', function (Blueprint $table) {
+                $table->increments('id');
+                $table->date('data');
+                $table->unsignedInteger('unidade_id');
+                $table->string('termos')->nullable();
+                $table->timestamps();
+                $table->foreign('unidade_id')->references('id')->on('unidades');
+            });
+        }
+        if(!Schema::connection('tenant')->hasTable('debitos')) {
+            Schema::connection('tenant')->create('debitos', function (Blueprint $table) {
+                $table->increments('id');
+                $table->unsignedInteger('unidade_id');
+                $table->enum('tipo', ['mensalidade', 'acordo', 'avulso', 'multa',])->default('mensalidade');
+                $table->string('obs')->nullable();    
+                $table->unsignedInteger('taxa_id')->nullable();
+                $table->unsignedInteger('acordo_id')->nullable();
+                $table->date('dtvencto');
+                $table->float('valor',8,2);
+                $table->date('dtpagto')->nullable();
+                $table->float('valorpago',8,2)->nullable();
+                $table->unsignedInteger('acordo_quitacao_id')->nullable();
+                $table->timestamps();
+
+                $table->foreign('unidade_id')->references('id')->on('unidades');
+                $table->foreign('taxa_id')->references('id')->on('taxas');
+                $table->foreign('acordo_id')->references('id')->on('acordos');
+                $table->foreign('acordo_quitacao_id')->references('id')->on('acordos');
+                
+            });
+        }
+
     }
     
 }
+
+// $table->increments('id');
+// $table->unsignedInteger('user_id');
+// $table->unsignedInteger('plan_id');
+// $table->date('start_at');
+// $table->date('end_at')->nullable();
+// $table->integer('charge_day');
+// $table->integer('trialdays')->default(0)->nullable();
+// $table->enum('status', ['active', 'inactive', 'delayed', 'ontrial',])->default('inactive');
+// $table->string('refnumber');
+// $table->timestamps();
+// $table->foreign('user_id')->references('id')->on('users');
+// $table->foreign('plan_id')->references('id')->on('plans');
