@@ -67,8 +67,7 @@ class TenantConfigDB {
         if(!Schema::connection('tenant')->hasTable('taxas')) {
             Schema::connection('tenant')->create('taxas', function (Blueprint $table) {
                 $table->increments('id');
-                $table->unsignedInteger('ano');
-                $table->unsignedInteger('mes');
+                $table->string('anomes');
                 $table->float('valor',8,2);
                 $table->timestamps();
             });
