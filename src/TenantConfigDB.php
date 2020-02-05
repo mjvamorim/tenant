@@ -42,7 +42,7 @@ class TenantConfigDB {
                 $table->string('celular')->nullable();
                 $table->string('fixo')->nullable();
                 $table->string('cpf')->nullable();
-                $table->string('cep')->nullable();
+                $table->string('cep',9)->nullable();
                 $table->string('rua')->nullable();
                 $table->string('numero')->nullable();
                 $table->string('complemento')->nullable();
@@ -56,10 +56,11 @@ class TenantConfigDB {
         if(!Schema::connection('tenant')->hasTable('unidades')) {
             Schema::connection('tenant')->create('unidades', function (Blueprint $table) {
                 $table->increments('id');
-                $table->string('descricao');
+                $table->string('descricao',30);
                 $table->unsignedInteger('tamanho')->nullable();
                 $table->unsignedInteger('proprietario_id');
-                $table->string('obs')->nullable();
+                $table->text('obs')->nullable();
+                $table->string('boleto_impresso',1)->default('N');
                 $table->timestamps();
                 $table->foreign('proprietario_id')->references('id')->on('proprietarios');
             });
