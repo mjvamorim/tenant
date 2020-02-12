@@ -69,6 +69,7 @@ class TenantConfigDB {
             Schema::connection('tenant')->create('taxas', function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('anomes');
+                $table->date('dtvencto'); 
                 $table->float('valor',8,2);
                 $table->timestamps();
             });
