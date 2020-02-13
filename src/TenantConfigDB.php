@@ -57,7 +57,7 @@ class TenantConfigDB {
             Schema::connection('tenant')->create('unidades', function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('descricao',30);
-                $table->unsignedInteger('tamanho')->nullable();
+                $table->float('fator',8,5)->nullable()->default(1);
                 $table->unsignedInteger('proprietario_id');
                 $table->text('obs')->nullable();
                 $table->string('boleto_impresso',1)->default('N');
