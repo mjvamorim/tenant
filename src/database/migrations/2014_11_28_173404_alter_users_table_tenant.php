@@ -16,9 +16,9 @@ class AlterUsersTableTenant extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('mobile')->nullable();
             $table->string('image')->nullable();
-            $table->unsignedInteger('company_id')->nullable();
+            $table->unsignedInteger('empresa_id')->nullable();
             $table->string('type')->default('User')->nullable();
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('empresa_id')->references('id')->on('empresas');
         });
     }
 
@@ -37,9 +37,9 @@ class AlterUsersTableTenant extends Migration
             Schema::table('users', function (Blueprint $table) {
                 $table->dropColumn('image');
             });
-        }        if (Schema::hasColumn('users', 'company_id')) {
+        }        if (Schema::hasColumn('users', 'empresa_id')) {
             Schema::table('users', function (Blueprint $table) {
-                $table->dropColumn('company_id');
+                $table->dropColumn('empresa_id');
             });
         }        if (Schema::hasColumn('users', 'type')) {
             Schema::table('users', function (Blueprint $table) {

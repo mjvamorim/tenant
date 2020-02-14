@@ -1,6 +1,6 @@
 {
     "name": "mjvamorim/tenant",
-    "description": "Package to Choise Database Based on Company_id field",
+    "description": "Package to Choise Database Based on Empresa field",
     "type": "library",
     "license": "MIT",
     "version": "1.0.1",

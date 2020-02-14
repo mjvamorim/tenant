@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Amorim\Tenant\Models\Company;
+use Amorim\Tenant\Models\Empresa;
 use Amorim\Tenant\TenantModel;
 
 class User extends Authenticatable
@@ -16,7 +16,7 @@ class User extends Authenticatable
     protected $connection = 'main';
 
     protected $fillable = [
-        'name', 'email', 'password','image','mobile','company_id',
+        'name', 'email', 'password','image','mobile','empresa_id',
     ];
 
     protected $rules = [
@@ -29,8 +29,11 @@ class User extends Authenticatable
         ['name'=>'name',       'title'=>'Nome',     'datatable'=>'true',  'form'=>'true', 'type'=>'text', ],
         ['name'=>'email',      'title'=>'Email',    'datatable'=>'true',  'form'=>'true', 'type'=>'text', ],
         ['name'=>'mobile',     'title'=>'Celular',  'datatable'=>'true',  'form'=>'true', 'type'=>'text', ], 
-        ['name'=>'company_id', 'title'=>'Empresa',  'datatable'=>'false', 'form'=>'true', 'type'=>'select', ],
-        ['name'=>'image',      'title'=>'Foto',     'datatable'=>'false', 'form'=>'true', 'type'=>'image', ],
+        ['name'=>'empresa_id', 'title'=>'Empresa',  'datatable'=>'false', 'form'=>'true', 'type'=>'fk', 'size'=>'8',
+            'options'=> [
+                'model'=>'empresa', 'value'=>'id','label'=>'nome',],
+        ], 
+         ['name'=>'image',      'title'=>'Foto',     'datatable'=>'false', 'form'=>'true', 'type'=>'image', ],
         
     ];
 
@@ -38,9 +41,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function company()
+    public function empresa()
     {
-        return $this->belongsTo('Amorim\Tenant\Models\Company');
+        return $this->belongsTo('Amorim\Tenant\Models\Empresa');
     }
 
     public function getImage() {

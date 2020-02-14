@@ -2,7 +2,7 @@
 
 namespace Amorim\Tenant\Middleware;
 
-use Amorim\Tenant\Models\Company;
+use Amorim\Tenant\Models\Empresa;
 use Amorim\Tenant\TenantConnector;
 
 use Amorim\Tenant\TenantConfigDB;
@@ -13,56 +13,48 @@ class Tenant {
 
     use TenantConnector;
 
-    /**
-     * @var Company
-     */
-    protected $company;
+    protected $empresa;
 
-    /**
-     * Tenant constructor.
-     * @param Company $company
-     */
-    public function __construct(Company $company) {
-        //$this->company = Company::findOrFail(1);
-        $this->company = $company;
+    public function __construct(Empresa $empresa) {
+        $this->empresa = $empresa;
     }
 
-    public function selectTenant(Request $request, Company $company) {
-        TenantConfigDB::createDatabase($company);
-        $this->reconnect($this->company->findOrFail($company->id)); 
-        $request->session()->put('tenant', $company);
+    public function selectTenant(Request $request, Empresa $empresa) {
+        TenantConfigDB::createDatabase($empresa);
+        $this->reconnect($this->empresa->findOrFail($empresa->id)); 
+        $request->session()->put('tenant', $empresa);
         TenantConfigDB::createTenantTables();
     }
-    public function createCompanyAuthUser() { 
+    public function createEmpresaAuthUser() { 
         $user = auth()->user();
         $data = [
             'name' => $user->name,
             'email' => $user->email,
             'mobile' => $user->mobile,
         ];
-        $company = TenantConfigDB::createCompany($data);
-        $user->company_id = $company->id;
+        $empresa = TenantConfigDB::createEmpresa($data);
+        $user->empresa_id = $empresa->id;
         $user->save();
     }
 
     public function handle(Request $request, Closure $next) {
         if (auth()->check()) {
-            if (auth()->user()->company == null) {
-                $this->createCompanyAuthUser();
+            if (auth()->user()->empresa == null) {
+                $this->createEmpresaAuthUser();
             }
-            $this->selectTenant($request, auth()->user()->company);
+            $this->selectTenant($request, auth()->user()->empresa);
         }
 
         if (($request->session()->get('tenant')) === null)
             return redirect()->route('home')->withErrors(['error' => __('Please select a customer/tenant before making this request.')]);
-        // Get the company object with the id stored in session
-        $company = $this->company->find($request->session()->get('tenant')->id);
+        // Get the empresa object with the id stored in session
+        $empresa = $this->empresa->find($request->session()->get('tenant')->id);
       
 
-        // Connect and place the $company object in the view
-        $this->reconnect($company);
-        $request->session()->put('company', $company);
-        $request->session()->put('tenant', $company);
+        // Connect and place the $empresa object in the view
+        $this->reconnect($empresa);
+        $request->session()->put('empresa', $empresa);
+        $request->session()->put('tenant', $empresa);
           
         return $next($request);
     }

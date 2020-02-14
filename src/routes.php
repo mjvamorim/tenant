@@ -1,10 +1,10 @@
 <?php
 Route::group(['middleware' => ['web','auth']], function () {
 
-    Route::get('company', '\Amorim\Tenant\Controllers\CompanyController@index')->name('admin.company');
-    Route::get('company/getdata', '\Amorim\Tenant\Controllers\CompanyController@getData')->name('admin.company.getdata');
-    Route::get('company/fetchdata', '\Amorim\Tenant\Controllers\CompanyController@fetchData')->name('admin.company.fetchdata');
-    Route::post('company/postdata', '\Amorim\Tenant\Controllers\CompanyController@postData')->name('admin.company.postdata');
+    Route::get('empresa', '\Amorim\Tenant\Controllers\EmpresaController@index')->name('admin.empresa');
+    Route::get('empresa/getdata', '\Amorim\Tenant\Controllers\EmpresaController@getData')->name('admin.empresa.getdata');
+    Route::get('empresa/fetchdata', '\Amorim\Tenant\Controllers\EmpresaController@fetchData')->name('admin.empresa.fetchdata');
+    Route::post('empresa/postdata', '\Amorim\Tenant\Controllers\EmpresaController@postData')->name('admin.empresa.postdata');
 
 
 });

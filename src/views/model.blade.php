@@ -193,7 +193,7 @@ $(document).ready(function() {
         var id = $(this).attr("id");
               
         $.ajax({
-            url:"company/"+id,
+            url:"empresa/"+id,
             method:'get',
             dataType:'json',
             success:function(data)

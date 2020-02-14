@@ -1,7 +1,7 @@
 #Tenant  1.0.1
-This package provider a database tenant soluction which database connection is choice based on company/user select on login;
+This package provider a database tenant soluction which database connection is choice based on empresa/user select on login;
 
-The view company references de adminlte master view, then before install this package you must install :
+The view empresa references de adminlte master view, then before install this package you must install :
 https://github.com/jeroennoten/Laravel-AdminLTE
 
 

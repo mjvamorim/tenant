@@ -6,29 +6,29 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
-use Amorim\Tenant\Models\Company;
+use Amorim\Tenant\Models\Empresa;
 
 class TenantConfigDB {
 
-    public static function createCompany(array $data)
+    public static function createEmpresa(array $data)
     {
-        $company = Company::create([
-            'name' => $data['name'],
+        $empresa = Empresa::create([
+            'nome' => $data['name'],
             'email' => $data['email'],
-            'mobile' => $data['mobile'],
+            'celular' => $data['mobile'],
             'db_host' => Config::get('database.connections.main.host') , 
             'db_username' => Config::get('database.connections.main.username') , 
             'db_password' => Config::get('database.connections.main.password') 
         ]);
-        $company->db_database = Config::get('database.connections.main.database').$company->id;
-        $company->save();
-        self::createDatabase($company);
-        return($company);
+        $empresa->db_database = Config::get('database.connections.main.database').$empresa->id;
+        $empresa->save();
+        self::createDatabase($empresa);
+        return($empresa);
     }
 
-    public static function createDatabase(Company $company)
+    public static function createDatabase(Empresa $empresa)
     {
-        $sql = 'create database if not exists '.$company->db_database;
+        $sql = 'create database if not exists '.$empresa->db_database;
         DB::statement($sql);
     }
 

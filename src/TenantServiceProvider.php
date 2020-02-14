@@ -33,7 +33,7 @@ class TenantServiceProvider extends ServiceProvider {
     public function register()
     {
         include __DIR__.'/routes.php';
-        $this->app->make('Amorim\Tenant\Controllers\CompanyController');
+        $this->app->make('Amorim\Tenant\Controllers\EmpresaController');
 
     }
 }

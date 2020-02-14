@@ -2,7 +2,7 @@
 
 namespace Amorim\Tenant\Controllers;
 
-use Amorim\Tenant\Models\Company;
+use Amorim\Tenant\Models\Empresa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\Controller;
@@ -11,34 +11,34 @@ use Response;
 use DataTables;
 
 
-class CompanyController extends Controller
+class EmpresaController extends Controller
 {   
 
     function index()
     {
-        $showables  = Company::getShowableFields();
-        $model = 'company';
+        $showables  = Empresa::getShowableFields();
+        $model = 'empresa';
         return view('tenant::model',compact('showables','model'));
     }
 
     function getData()
     {
-        $companies = Company::select();
-        return DataTables::of($companies)
-            ->addColumn('action', function($company){
-                $btedit = '<button class="btn edit" id="'.$company->id.'" title="Alterar" data-toggle="tooltip" ><i class="glyphicon glyphicon-edit"></i> </button>';
-                $btdelt = '<button class="btn delt" id="'.$company->id.'" title="Apagar" data-toggle="tooltip" ><i class="glyphicon glyphicon-trash"></i> </button>';
-                $btslct = '<button class="btn slct" id="'.$company->id.'" title="Escolher" data-toggle="tooltip" ><i class="glyphicon glyphicon-folder-open"></i> </button>';
+        $empresas = Empresa::select();
+        return DataTables::of($empresas)
+            ->addColumn('action', function($empresa){
+                $btedit = '<button class="btn edit" id="'.$empresa->id.'" title="Alterar" data-toggle="tooltip" ><i class="glyphicon glyphicon-edit"></i> </button>';
+                $btdelt = '<button class="btn delt" id="'.$empresa->id.'" title="Apagar" data-toggle="tooltip" ><i class="glyphicon glyphicon-trash"></i> </button>';
+                $btslct = '<button class="btn slct" id="'.$empresa->id.'" title="Escolher" data-toggle="tooltip" ><i class="glyphicon glyphicon-folder-open"></i> </button>';
                 return '<div align="center">'.$btedit.'<span> </span>'.$btdelt.'<span> </span>'.$btslct.'</div>';
             })
             ->make(true);
     }
 
-    function fetchData(Request $request,Company $company )
+    function fetchData(Request $request,Empresa $empresa )
     {
         $id = $request->input('id');
-        $company = Company::find($id);
-        echo json_encode($company);
+        $empresa = Empresa::find($id);
+        echo json_encode($empresa);
     }
 
 
@@ -48,7 +48,7 @@ class CompanyController extends Controller
         {
             $id = $request->input('id');
 
-            $deleted = Company::destroy($id);
+            $deleted = Empresa::destroy($id);
             if ($deleted) {
                 $error_array = [];
                 $success_output = '<div class="alert alert-success">Data Deleted</div>';
@@ -60,8 +60,8 @@ class CompanyController extends Controller
         }
         else {
 
-            $rules = Company::getRules();
-            $validation = Validator::make($request->all(), Company::getRules());      
+            $rules = Empresa::getRules();
+            $validation = Validator::make($request->all(), Empresa::getRules());      
             $error_array = array();
             $success_output = '';
             if ($validation->fails())
@@ -75,19 +75,19 @@ class CompanyController extends Controller
             {
                 if($request->get('button_action') == 'insert')
                 {
-                    $company = new Company;
-                    $input =  $request->only($company->fillable);
-                    $company->fill($input);
-                    $company->save();
+                    $empresa = new Empresa;
+                    $input =  $request->only($empresa->fillable);
+                    $empresa->fill($input);
+                    $empresa->save();
                     $success_output = '<div class="alert alert-success">Data Inserted</div>';
                 }
 
                 if($request->get('button_action') == 'update')
                 {
-                    $company = Company::find($request->get('id'));
-                    $input =  $request->only($company->fillable);
-                    $company->fill($input);
-                    $company->save();
+                    $empresa = Empresa::find($request->get('id'));
+                    $input =  $request->only($empresa->fillable);
+                    $empresa->fill($input);
+                    $empresa->save();
                     $success_output = '<div class="alert alert-success">Data Updated</div>';
                 }
             }
