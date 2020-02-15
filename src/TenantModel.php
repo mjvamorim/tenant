@@ -32,6 +32,10 @@ trait TenantModel {
         return with(new static)->rules;
     }
 
+    public static function getActions() {
+        return with(new static)->actions;
+    }
+
     public static function blank() {
         $blank=[];
         foreach(self::getShowableFields() as $item) {

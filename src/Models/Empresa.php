@@ -64,6 +64,17 @@ class Empresa extends BaseModelTenantMain
         ['name'=>'db_password',  'title'=>'Db_password', 'datatable'=>'false', 'form'=>'true',  'type'=>'text', 'size'=>'4',],
     ];
 
+    protected $actions = [
+        [   'ini'=>'<button class="btn edit" id="', 
+            'fim'=>'" title="Alterar" data-toggle="tooltip" ><i class="glyphicon glyphicon-edit"></i> </button>',
+        ],
+        [   'ini'=>'<button class="btn delt" id="', 
+            'fim'=>'" title="Apagar" data-toggle="tooltip" ><i class="glyphicon glyphicon-trash"></i> </button>',
+        ],
+        [   'ini'=>'<a class="btn slct" href="/user" id="', 
+            'fim'=>'" title="Escolher" data-toggle="tooltip" ><i class="glyphicon glyphicon-folder-open"></i> </button>',
+        ],             
+    ];
 
 
 }
