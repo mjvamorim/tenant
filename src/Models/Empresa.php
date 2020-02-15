@@ -10,7 +10,7 @@ class Empresa extends BaseModelTenantMain
         'id','nome', 'cpf','cep', 'rua','numero',
         'bairro', 'complemento', 'cidade',
         'uf','pais','email','celular','fixo',
-        'banco', 'agencia', 'conta',
+        'banco', 'agencia', 'conta','digito','carteira',
         'db_host', 'db_database', 'db_username', 'db_password', ];
         
     protected $rules = [
@@ -26,8 +26,8 @@ class Empresa extends BaseModelTenantMain
         ['name'=>'email',        'title'=>'Email',       'datatable'=>'true',  'form'=>'true',  'type'=>'text', 'size'=>'8', ],
         ['name'=>'celular',      'title'=>'Celular',     'datatable'=>'true',  'form'=>'true',  'type'=>'text', 'size'=>'4', 'mask'=>'(000)00000-0000', ], 
         ['name'=>'fixo',         'title'=>'Tel.Fixo',    'datatable'=>'false', 'form'=>'true',  'type'=>'text', 'size'=>'4', 'mask'=>'(000)00000-0000', ],
-        ['name'=>'cpf',          'title'=>'CPF',         'datatable'=>'true',  'form'=>'true',  'type'=>'text', 'size'=>'3', 'mask'=>'000.000.000-00', ],
-        ['name'=>'cep',          'title'=>'Cep',         'datatable'=>'false', 'form'=>'true',  'type'=>'cep', 'size'=>'3', 'mask'=>'00000-000', ],
+        ['name'=>'cpf',          'title'=>'Cpf ou CNPJ', 'datatable'=>'true',  'form'=>'true',  'type'=>'text', 'size'=>'4', ],
+        ['name'=>'cep',          'title'=>'Cep',         'datatable'=>'false', 'form'=>'true',  'type'=>'cep',  'size'=>'3', 'mask'=>'00000-000', ],
         ['name'=>'rua',          'title'=>'Rua',         'datatable'=>'false', 'form'=>'true',  'type'=>'text', 'size'=>'8', ],
         ['name'=>'numero',       'title'=>'Numero',      'datatable'=>'false', 'form'=>'true',  'type'=>'text', 'size'=>'2', ],
         ['name'=>'complemento',  'title'=>'Complemento', 'datatable'=>'false', 'form'=>'true',  'type'=>'text', 'size'=>'8', ],
@@ -54,14 +54,14 @@ class Empresa extends BaseModelTenantMain
         ['name'=>'agencia',      'title'=>'Agencia',     'datatable'=>'false', 'form'=>'true',  'type'=>'number', 'size'=>'4', 'mask'=>'0000',   'step'=>'1',],
         ['name'=>'conta',        'title'=>'Conta',       'datatable'=>'false', 'form'=>'true',  'type'=>'number', 'size'=>'4', 'mask'=>'00000',  'step'=>'1',],
         ['name'=>'digito',       'title'=>'Digito',      'datatable'=>'false', 'form'=>'true',  'type'=>'number', 'size'=>'4', 'mask'=>'0',      'step'=>'1',],
-        ['name'=>'carteira',     'title'=>'Conta',       'datatable'=>'false', 'form'=>'true',  'type'=>'number', 'size'=>'4', 'mask'=>'000',    'step'=>'1',],
+        ['name'=>'carteira',     'title'=>'Carteira',    'datatable'=>'false', 'form'=>'true',  'type'=>'number', 'size'=>'4', 'mask'=>'000',    'step'=>'1',],
         ['name'=>'convenio',     'title'=>'Convênio',    'datatable'=>'false', 'form'=>'true',  'type'=>'number', 'size'=>'4', 'mask'=>'0000000','step'=>'1', ],
         
         //Conexao com o banco
-        ['name'=>'db_host',      'title'=>'Db_host',     'datatable'=>'false', 'form'=>'true',  'type'=>'text', ],
-        ['name'=>'db_database',  'title'=>'Db_database', 'datatable'=>'false', 'form'=>'true',  'type'=>'text', ],
-        ['name'=>'db_username',  'title'=>'Db_username', 'datatable'=>'false', 'form'=>'true',  'type'=>'text', ],
-        ['name'=>'db_password',  'title'=>'Db_password', 'datatable'=>'false', 'form'=>'true',  'type'=>'text', ],
+        ['name'=>'db_host',      'title'=>'Db_host',     'datatable'=>'false', 'form'=>'true',  'type'=>'text', 'size'=>'4',],
+        ['name'=>'db_database',  'title'=>'Db_database', 'datatable'=>'false', 'form'=>'true',  'type'=>'text', 'size'=>'4',],
+        ['name'=>'db_username',  'title'=>'Db_username', 'datatable'=>'false', 'form'=>'true',  'type'=>'text', 'size'=>'4',],
+        ['name'=>'db_password',  'title'=>'Db_password', 'datatable'=>'false', 'form'=>'true',  'type'=>'text', 'size'=>'4',],
     ];
 
 

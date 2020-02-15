@@ -18,7 +18,8 @@ class EmpresaController extends Controller
     {
         $showables  = Empresa::getShowableFields();
         $model = 'empresa';
-        return view('tenant::model',compact('showables','model'));
+        return view('crud::crudview',compact('showables','model'));
+        
     }
 
     function getData()
