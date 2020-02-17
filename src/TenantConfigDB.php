@@ -88,7 +88,7 @@ class TenantConfigDB {
             Schema::connection('tenant')->create('debitos', function (Blueprint $table) {
                 $table->increments('id');
                 $table->unsignedInteger('unidade_id');
-                $table->enum('tipo', ['mensalidade', 'acordo', 'avulso', 'multa',])->default('mensalidade');
+                $table->enum('tipo', ['Mensalidade', 'Acordo', 'Avulso', 'Multa',])->default('Mensalidade');
                 $table->string('obs')->nullable();    
                 $table->unsignedInteger('taxa_id')->nullable();
                 $table->unsignedInteger('acordo_id')->nullable();
