@@ -96,6 +96,7 @@ class TenantConfigDB {
                 $table->float('valor',8,2);
                 $table->date('dtpagto')->nullable();
                 $table->float('valorpago',8,2)->nullable();
+                $table->enum('remessa',['S', 'N'])->default('N');
                 $table->unsignedInteger('acordo_quitacao_id')->nullable();
                 $table->timestamps();
 
