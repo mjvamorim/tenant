@@ -50,6 +50,7 @@ class TenantConfigDB {
                 $table->string('cidade')->nullable();
                 $table->string('uf')->nullable();
                 $table->string('pais')->nullable();
+                $table->index('nome');
                 $table->timestamps();
             });
         }
@@ -59,10 +60,11 @@ class TenantConfigDB {
                 $table->string('descricao',30);
                 $table->float('fator',8,5)->nullable()->default(1);
                 $table->unsignedInteger('proprietario_id');
-                $table->text('obs')->nullable();
+                $table->longText('obs')->nullable();
                 $table->string('boleto_impresso',1)->default('N');
                 $table->timestamps();
                 $table->foreign('proprietario_id')->references('id')->on('proprietarios');
+                $table->index('descricao');
             });
         }
         if(!Schema::connection('tenant')->hasTable('taxas')) {
@@ -72,6 +74,7 @@ class TenantConfigDB {
                 $table->date('dtvencto'); 
                 $table->float('valor',8,2);
                 $table->timestamps();
+                $table->index('anomes');
             });
         }
         if(!Schema::connection('tenant')->hasTable('acordos')) {
@@ -79,7 +82,7 @@ class TenantConfigDB {
                 $table->increments('id');
                 $table->date('data');
                 $table->unsignedInteger('unidade_id');
-                $table->string('termos')->nullable();
+                $table->longText('termos')->nullable();
                 $table->timestamps();
                 $table->foreign('unidade_id')->references('id')->on('unidades');
             });
@@ -89,7 +92,7 @@ class TenantConfigDB {
                 $table->increments('id');
                 $table->unsignedInteger('unidade_id');
                 $table->enum('tipo', ['Mensalidade', 'Acordo', 'Avulso', 'Multa',])->default('Mensalidade');
-                $table->string('obs')->nullable();    
+                $table->longText('obs')->nullable();    
                 $table->unsignedInteger('taxa_id')->nullable();
                 $table->unsignedInteger('acordo_id')->nullable();
                 $table->date('dtvencto');
