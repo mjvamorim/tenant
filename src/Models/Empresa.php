@@ -71,9 +71,10 @@ class Empresa extends BaseModelTenantMain
         [   'ini'=>'<button class="btn delt" id="', 
             'fim'=>'" title="Apagar" data-toggle="tooltip" ><i class="glyphicon glyphicon-trash"></i> </button>',
         ],
-        [   'ini'=>'<a class="btn slct" href="/user" id="', 
-            'fim'=>'" title="Escolher" data-toggle="tooltip" ><i class="glyphicon glyphicon-folder-open"></i> </button>',
+        [   'ini'=>'<button class="btn boleto"  onclick="location.href=\'/user?empresa_id=', 
+            'fim'=>'\'"  title="Usuarios" data-toggle="tooltip" ><i class="glyphicon glyphicon-user"></i> </button>',
         ],             
+         
     ];
 
 
