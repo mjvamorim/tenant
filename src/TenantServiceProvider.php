@@ -11,8 +11,8 @@ class TenantServiceProvider extends ServiceProvider {
         //$this->loadRoutesFrom(__DIR__.'/routes.php');
 
         //Views
-        $this->loadViewsFrom(__DIR__.'/views', 'tenant'); //return view(tenant::model);
-        $this->publishes([__DIR__.'/views' => resource_path('views/mjvamorim/tenant'),],'views');
+        //$this->loadViewsFrom(__DIR__.'/views', 'tenant'); //return view(tenant::model);
+        //$this->publishes([__DIR__.'/views' => resource_path('views/mjvamorim/tenant'),],'views');
         
 
         //Migrations

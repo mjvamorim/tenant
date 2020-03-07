@@ -25,15 +25,15 @@ class User extends Authenticatable
     ];
 
     protected $showable = [
-        ['name'=>'id',         'title'=>'Id',       'datatable'=>'false', 'form'=>'false','type'=>'id',   ],
-        ['name'=>'name',       'title'=>'Nome',     'datatable'=>'true',  'form'=>'true', 'type'=>'text', ],
-        ['name'=>'email',      'title'=>'Email',    'datatable'=>'true',  'form'=>'true', 'type'=>'text', ],
-        ['name'=>'mobile',     'title'=>'Celular',  'datatable'=>'true',  'form'=>'true', 'type'=>'text', ], 
+        ['name'=>'id',         'title'=>'Id',       'datatable'=>'false', 'form'=>'false','type'=>'id',   'size'=>'4',],
+        ['name'=>'name',       'title'=>'Nome',     'datatable'=>'true',  'form'=>'true', 'type'=>'text', 'size'=>'4',],
+        ['name'=>'email',      'title'=>'Email',    'datatable'=>'true',  'form'=>'true', 'type'=>'text', 'size'=>'4',],
+        ['name'=>'mobile',     'title'=>'Celular',  'datatable'=>'true',  'form'=>'true', 'type'=>'text', 'size'=>'4',], 
         ['name'=>'empresa_id', 'title'=>'Empresa',  'datatable'=>'false', 'form'=>'true', 'type'=>'fk', 'size'=>'8',
             'options'=> [
                 'model'=>'empresa', 'value'=>'id','label'=>'nome',],
         ], 
-         ['name'=>'image',      'title'=>'Foto',     'datatable'=>'false', 'form'=>'true', 'type'=>'image', ],
+         ['name'=>'image',      'title'=>'Foto',     'datatable'=>'false', 'form'=>'true', 'type'=>'image', 'size'=>'4',],
         
     ];
 
