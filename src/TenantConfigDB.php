@@ -37,19 +37,19 @@ class TenantConfigDB {
         if(!Schema::connection('tenant')->hasTable('proprietarios')) {
             Schema::connection('tenant')->create('proprietarios', function (Blueprint $table) {
                 $table->increments('id');
-                $table->string('nome')->nullable();
-                $table->string('email')->nullable();
-                $table->string('celular')->nullable();
-                $table->string('fixo')->nullable();
-                $table->string('cpf')->nullable();
+                $table->string('nome',100)->nullable();
+                $table->string('email',100)->nullable();
+                $table->string('celular',20)->nullable();
+                $table->string('fixo',20)->nullable();
+                $table->string('cpf',20)->nullable();
                 $table->string('cep',9)->nullable();
-                $table->string('rua')->nullable();
-                $table->string('numero')->nullable();
-                $table->string('complemento')->nullable();
-                $table->string('bairro')->nullable();
-                $table->string('cidade')->nullable();
-                $table->string('uf')->nullable();
-                $table->string('pais')->nullable();
+                $table->string('rua',60)->nullable();
+                $table->string('numero',30)->nullable();
+                $table->string('complemento',60)->nullable();
+                $table->string('bairro',30)->nullable();
+                $table->string('cidade',30)->nullable();
+                $table->string('uf',2)->nullable();
+                $table->string('pais',30)->nullable();
                 $table->index('nome');
                 $table->timestamps();
             });
@@ -58,7 +58,8 @@ class TenantConfigDB {
             Schema::connection('tenant')->create('unidades', function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('descricao',30);
-                $table->float('fator',8,5)->nullable()->default(1);
+                $table->float('adicional',8,2)->nullable()->default(0);
+                $table->enum('tipo_adicional', ['Valor Fixo', 'Percentual',])->default('Valor Fixo');
                 $table->unsignedInteger('proprietario_id');
                 $table->longText('obs')->nullable();
                 $table->string('boleto_impresso',1)->default('N');
@@ -70,7 +71,7 @@ class TenantConfigDB {
         if(!Schema::connection('tenant')->hasTable('taxas')) {
             Schema::connection('tenant')->create('taxas', function (Blueprint $table) {
                 $table->increments('id');
-                $table->string('anomes');
+                $table->string('anomes',7);
                 $table->date('dtvencto'); 
                 $table->float('valor',8,2);
                 $table->timestamps();

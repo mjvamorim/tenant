@@ -14,10 +14,10 @@ class AlterUsersTableTenant extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('mobile')->nullable();
+            $table->string('mobile',20)->nullable();
             $table->string('image')->nullable();
             $table->unsignedInteger('empresa_id')->nullable();
-            $table->string('type')->default('User')->nullable();
+            $table->string('type',20)->default('User')->nullable();
             $table->foreign('empresa_id')->references('id')->on('empresas');
         });
     }
