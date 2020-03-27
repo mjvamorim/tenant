@@ -62,7 +62,7 @@ class TenantConfigDB {
                 $table->enum('tipo_adicional', ['Valor Fixo', 'Percentual',])->default('Valor Fixo');
                 $table->unsignedInteger('proprietario_id');
                 $table->longText('obs')->nullable();
-                $table->string('boleto_impresso',1)->default('N');
+                $table->enum('envio_boleto',['Ambos', 'Impresso', 'Email'])->default('Ambos');
                 $table->timestamps();
                 $table->foreign('proprietario_id')->references('id')->on('proprietarios');
                 $table->index('descricao');
