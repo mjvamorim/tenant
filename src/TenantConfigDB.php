@@ -112,6 +112,17 @@ class TenantConfigDB {
                 
             });
         }
+        if(!Schema::connection('tenant')->hasTable('emails')) {
+            Schema::connection('tenant')->create('emails', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('de',100)->nullable();
+                $table->string('para',100)->nullable();
+                $table->string('assunto',100)->nullable();
+                $table->longText('mensagem')->nullable();
+                $table->string('anexo',150)->nullable();
+                $table->timestamps();
+            });
+        }
 
     }
     
