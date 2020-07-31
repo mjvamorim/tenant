@@ -83,6 +83,7 @@ class TenantConfigDB {
                 $table->increments('id');
                 $table->date('data');
                 $table->unsignedInteger('unidade_id');
+                $table->enum('situacao',['Aberto', 'Quitado', 'Renegociado'])->default('Aberto');
                 $table->longText('termos')->nullable();
                 $table->timestamps();
                 $table->foreign('unidade_id')->references('id')->on('unidades');
