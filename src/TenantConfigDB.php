@@ -61,6 +61,9 @@ class TenantConfigDB {
                 $table->float('adicional',8,2)->nullable()->default(0);
                 $table->enum('tipo_adicional', ['Valor Fixo', 'Percentual',])->default('Valor Fixo');
                 $table->unsignedInteger('proprietario_id');
+                $table->longText('moradores')->nullable();
+                $table->longText('veiculos')->nullable();
+                $table->string('ramal',30)->nullable();
                 $table->longText('obs')->nullable();
                 $table->enum('envio_boleto',['Ambos', 'Impresso', 'Email'])->default('Ambos');
                 $table->timestamps();
