@@ -16,7 +16,7 @@ class User extends Authenticatable
     protected $connection = 'main';
 
     protected $fillable = [
-        'name', 'email', 'password','image','mobile','empresa_id',
+        'name', 'email', 'password','image','mobile','empresa_id','nivel'
     ];
 
     protected $rules = [
@@ -33,7 +33,8 @@ class User extends Authenticatable
             'options'=> [
                 'model'=>'empresa', 'value'=>'id','label'=>'nome',],
         ], 
-         ['name'=>'image',      'title'=>'Foto',     'datatable'=>'false', 'form'=>'true', 'type'=>'image', 'size'=>'4',],
+        ['name'=>'nivel',      'title'=>'Nível',      'datatable'=>'true',  'form'=>'true',  'type'=>'number', 'size'=>'3', 'step'=>'1.',],
+        ['name'=>'image',      'title'=>'Foto',     'datatable'=>'false', 'form'=>'true', 'type'=>'image', 'size'=>'4',],
         
     ];
 
