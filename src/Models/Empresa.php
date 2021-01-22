@@ -40,9 +40,9 @@ class Empresa extends BaseModelTenantMain
         //Dados Bancários
         ['name'=>'banco',        'title'=>'Banco',       'datatable'=>'false', 'form'=>'true',  'type'=>'select', 'size'=>'4', 
             'options'=> [
-                ['value'=>'001','label'=>'Banco do Brasil'],
-                ['value'=>'033','label'=>'Santander'],
-                ['value'=>'041','label'=>'Banrisul'],
+                ['value'=>'1','label'=>'Banco do Brasil'],
+                ['value'=>'33','label'=>'Santander'],
+                ['value'=>'41','label'=>'Banrisul'],
                 ['value'=>'104','label'=>'Caixa Economica'],
                 ['value'=>'237','label'=>'Bradesco'],
                 ['value'=>'341','label'=>'Itaú'],
