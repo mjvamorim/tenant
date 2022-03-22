@@ -42,6 +42,8 @@ class TenantConfigDB {
                 $table->string('celular',20)->nullable();
                 $table->string('fixo',20)->nullable();
                 $table->string('cpf',20)->nullable();
+                $table->string('conjuge_nome',100)->nullable();
+                $table->string('conjuge_cpf',20)->nullable();
                 $table->string('cep',9)->nullable();
                 $table->string('rua',60)->nullable();
                 $table->string('numero',30)->nullable();
